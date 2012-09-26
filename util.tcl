@@ -36,8 +36,6 @@ proc lcatr_package { hash args } {
 
     # must do deps first
     foreach dep $args {
-	append-path CCDTEST_DEPS "$dep"
-	#set_outdir $dep
 	module load $dep
     }
 
@@ -49,10 +47,10 @@ proc lcatr_package { hash args } {
     #set od [set_outdir "$name/$ver"]
     #setenv CCDTEST_OUTDIR $od/$env(CCDTEST_
 
+    append-path CCDTEST_LCATR_PKGS "$name/$ver"
     setenv CCDTEST_NAME $name
     setenv CCDTEST_VERSION $ver
     setenv CCDTEST_GIT_HASH $hash
-
     setenv CCDTEST_MODULEFILES_HASH [git_hash [file dirname [info script]]]
 
     set helpstring [format "%s/%s - set up environment for %s version %s" $name $ver $name $ver]
