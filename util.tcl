@@ -34,6 +34,9 @@ proc set_outdir { dep } {
 
 proc lcatr_package { hash args } {
 
+    #puts "HASH: $hash"
+    #puts "ARGS: $args"
+
     # must do deps first
     foreach dep $args {
 	module load $dep
@@ -43,6 +46,7 @@ proc lcatr_package { hash args } {
     set path [split "$ModulesCurrentModulefile" "/"]
     set name [lrange $path end-1 end-1]
     set ver  [lrange $path end   end]
+    set base [join [lrange $path 0 end-2] "/"]
 
     #set od [set_outdir "$name/$ver"]
     #setenv CCDTEST_OUTDIR $od/$env(CCDTEST_
@@ -51,13 +55,14 @@ proc lcatr_package { hash args } {
     setenv CCDTEST_NAME $name
     setenv CCDTEST_VERSION $ver
     setenv CCDTEST_GIT_HASH $hash
-    setenv CCDTEST_MODULEFILES_HASH [git_hash [file dirname [info script]]]
+    
+    setenv CCDTEST_MODULEFILES_HASH [git_hash $base]
 
     set helpstring [format "%s/%s - set up environment for %s version %s" $name $ver $name $ver]
     module-whatis $helpstring
 }
 
-lcatr_package deadbeaf02deadbeaf02deadbeaf02deadbeaf02
+# lcatr_package deadbeaf02deadbeaf02deadbeaf02deadbeaf02
 # lcatr_package name2 name1
 # lcatr_package name3 name2 name1
 
