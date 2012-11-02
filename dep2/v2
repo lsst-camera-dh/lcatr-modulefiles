@@ -3,7 +3,7 @@
 set base [file dirname [file dirname $ModulesCurrentModulefile]]
 source $base/util.tcl
 
-lcatr_package deadbeaf02deadbeaf02deadbeaf02deadbeaf02
+lcatr_package /bin/echo /bin/echo deadbeaf02deadbeaf02deadbeaf02deadbeaf02
 
 proc ModulesHelp { } {
     puts "A package that has no dependencies"

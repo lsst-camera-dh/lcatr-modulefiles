@@ -25,14 +25,17 @@ proc set_outdir { dep } {
     set depname [lrange $depnamever end-1 end-1]
     set depver  [lrange $depnamever end   end]
     
-    set outdir [file join $env(CCDTEST_ROOT) $env(CCDTEST_CCD_ID) $depname $depver]
+    set outdir [file join $env(LCATR_ROOT) $env(LCATR_CCD_ID) $depname $depver]
     set updepname [string toupper $depname]
 
-    setenv CCDTEST_${updepname}_OUTDIR $outdir
+    setenv LCATR_${updepname}_OUTDIR $outdir
     return $outdir
 }
 
-proc lcatr_package { hash args } {
+# Register an LCATR modulefile to produce standard environment.  Call
+# with the path to the producer and validator programs a git commit
+# hash and a list of any dpendencies ("module/version" pairs).
+proc lcatr_package { producer validator hash args } {
 
     #puts "HASH: $hash"
     #puts "ARGS: $args"
@@ -49,14 +52,16 @@ proc lcatr_package { hash args } {
     set base [join [lrange $path 0 end-2] "/"]
 
     #set od [set_outdir "$name/$ver"]
-    #setenv CCDTEST_OUTDIR $od/$env(CCDTEST_
+    #setenv LCATR_OUTDIR $od/$env(LCATR_
 
-    append-path CCDTEST_LCATR_PKGS "$name/$ver"
-    setenv CCDTEST_NAME $name
-    setenv CCDTEST_VERSION $ver
-    setenv CCDTEST_GIT_HASH $hash
+    append-path LCATR_LCATR_PKGS "$name/$ver"
+    setenv LCATR_NAME $name
+    setenv LCATR_VERSION $ver
+    setenv LCATR_PRODUCER $producer
+    setenv LCATR_VALIDATOR $validator
+    setenv LCATR_GIT_HASH $hash
     
-    setenv CCDTEST_MODULEFILES_HASH [git_hash $base]
+    setenv LCATR_MODULEFILES_HASH [git_hash $base]
 
     set helpstring [format "%s/%s - set up environment for %s version %s" $name $ver $name $ver]
     module-whatis $helpstring

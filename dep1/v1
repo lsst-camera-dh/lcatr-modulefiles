@@ -3,7 +3,7 @@
 set base [file dirname [file dirname $ModulesCurrentModulefile]]
 source $base/util.tcl
 
-lcatr_package deadbeaf01deadbeaf01deadbeaf01deadbeaf01 dep2/v2
+lcatr_package /bin/echo /bin/echo deadbeaf01deadbeaf01deadbeaf01deadbeaf01 dep2/v2
 
 proc ModulesHelp { } {
     puts "A package that depends on dep2"
