@@ -55,7 +55,7 @@ proc lcatr_package { producer validator hash args } {
     #setenv LCATR_OUTDIR $od/$env(LCATR_
 
     append-path LCATR_LCATR_PKGS "$name/$ver"
-    setenv LCATR_NAME $name
+    setenv LCATR_JOB $name
     setenv LCATR_VERSION $ver
     setenv LCATR_PRODUCER $producer
     setenv LCATR_VALIDATOR $validator

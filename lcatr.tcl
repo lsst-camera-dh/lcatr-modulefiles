@@ -6,10 +6,9 @@
 # with the path to the producer and validator programs relative to the
 # package's installation area
 proc lcatr_package { producer validator } {
-    global env
 
-    set pkgname "$env(LCATR_NAME)/$env(LCATR_VERSION)"
-    set pkgpath "$env(LCATR_INSTALL_AREA)/$pkgname"
+    set pkgname "$::env(LCATR_JOB)/$::env(LCATR_VERSION)"
+    set pkgpath "$::env(LCATR_INSTALL_AREA)/$pkgname"
 
     append-path LCATR_LCATR_PKGS "$pkgname"
 
