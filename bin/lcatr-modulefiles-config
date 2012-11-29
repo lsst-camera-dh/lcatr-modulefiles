@@ -1,5 +1,18 @@
 #!/bin/bash
 
-# for now, just a script that returns where it is, minus two directories
+# for now, just a script that returns where the modulefiles are
 
-readlink -f $(dirname $(dirname $BASH_SOURCE))
+modulefile_dir () {
+    local maybe=""
+    for maybe in modules modulefiles
+    do
+	maybe="$(readlink -f $(dirname $(dirname $BASH_SOURCE)))/$maybe"
+	if [ -d $maybe ] ; then
+	    echo $maybe
+	    return
+	fi
+    done
+}
+
+modulefile_dir
+
