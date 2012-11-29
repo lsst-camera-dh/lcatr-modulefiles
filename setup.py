@@ -9,7 +9,7 @@ for path in glob('modules/*/*'):
         continue
     _,k,v = path.split('/')
     files['modulefiles/'+k].append(path)
-files['lib/tcl'] = glob('lib/*.tcl')
+files['modulefiles'] = glob('lib/*.tcl')
 print files.items()
 setup(name='lcatr-modulefiles',
       version='0.1',
