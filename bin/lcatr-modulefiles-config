@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# for now, just a script that returns where it is, minus two directories
+
+readlink -f $(dirname $(dirname $BASH_SOURCE))
