@@ -12,6 +12,14 @@ proc lcatr_package { producer validator } {
 
     append-path LCATR_LCATR_PKGS "$pkgname"
 
-    setenv LCATR_PRODUCER "$pkgpath/$producer"
-    setenv LCATR_VALIDATOR "$pkgpath/$validator"
+    if {[string index $producer 0] == "/"} {
+	setenv LCATR_PRODUCER $producer
+    } else {
+	setenv LCATR_PRODUCER $pkgpath/$producer
+    }
+    if {[string index $validator 0] == "/"} {
+	setenv LCATR_VALIDATOR $validator
+    } else {
+	setenv LCATR_VALIDATOR $pkgpath/$validator
+    }
 }
