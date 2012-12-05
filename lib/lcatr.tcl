@@ -11,6 +11,7 @@ proc lcatr_package { producer validator } {
     set pkgpath "$::env(LCATR_INSTALL_AREA)/$pkgname"
 
     append-path LCATR_LCATR_PKGS "$pkgname"
+    append-path LCATR_SCHEMA_PATH "$pkgpath"
 
     if {[string index $producer 0] == "/"} {
 	setenv LCATR_PRODUCER $producer
