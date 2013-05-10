@@ -5,10 +5,14 @@
 # Register an LCATR modulefile to produce standard environment.  Call
 # with the path to the producer and validator programs relative to the
 # package's installation area
-proc lcatr_package { producer validator } {
+proc lcatr_package { producer validator {pkgpath ""} } {
+
+    if { [string compare $pkgpath ""] == 0 } {
+        set pkgpath "$::env(LCATR_INSTALL_AREA)"
+    }
 
     set pkgname "$::env(LCATR_JOB)/$::env(LCATR_VERSION)"
-    set pkgpath "$::env(LCATR_INSTALL_AREA)/$pkgname"
+    set pkgpath "$pkgpath/$pkgname"
 
     append-path LCATR_LCATR_PKGS "$pkgname"
     append-path LCATR_SCHEMA_PATH "$pkgpath"
