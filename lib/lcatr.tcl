@@ -8,7 +8,7 @@
 proc lcatr_package { producer validator {pkgpath ""} } {
 
     if { [string compare $pkgpath ""] == 0 } {
-        set pkgpath "$::env(LCATR_INSTALL_AREA)"
+        set pkgpath "$::env(LCATR_INSTALL_AREA)/share"
     }
 
     set pkgname "$::env(LCATR_JOB)/$::env(LCATR_VERSION)"

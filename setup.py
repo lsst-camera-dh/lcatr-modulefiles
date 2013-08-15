@@ -12,7 +12,7 @@ for path in glob('modules/*/*'):
 files['share/modulefiles'] = glob('lib/*.tcl')
 print files.items()
 setup(name='lcatr-modulefiles',
-      version='0.2',
+      version=open('VERSION').read().strip(),
       url='https://git.racf.bnl.gov/astro/cgit/lcatr/modules.git',
       author='Brett Viren',
       author_email='bv@bnl.gov',
