@@ -16,8 +16,6 @@ setup(name='lcatr-modulefiles',
       url='https://git.racf.bnl.gov/astro/cgit/lcatr/modules.git',
       author='Brett Viren',
       author_email='bv@bnl.gov',
-      #package_dir = {'': 'python'},
-      #packages = ['lcatr','lcatr.harness'],
       scripts = [ 'bin/lcatr-modulefiles-config' ],
       data_files = files.items(),
       )
