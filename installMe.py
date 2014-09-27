@@ -37,6 +37,7 @@ if os.path.isfile(os.path.join(jhRoot, 'bin', 'lcatr-modulefiles-config')):
     if not update:
         print 'Some version of the package is already installed'
         print 'Delete or move away before attempting new install'
+        print 'or re-invoke with --update option'
         exit
     else:
         print 'Overwriting old version'
