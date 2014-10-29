@@ -28,7 +28,7 @@ pythonversion = 'python' + str(sys.version_info.major) + '.' + str(sys.version_i
 sitePkgs = os.path.join(jhRoot, 'lib', pythonversion, 'site-packages')
 if (not os.path.isdir(sitePkgs)) or (not os.path.isdir(os.path.join(jhRoot, 'bin'))):
     print root + ' is not root of a job harness installation'
-    exit
+    sys.exit()
 
 pkgtop = os.path.dirname(sys.argv[0])
 
@@ -38,7 +38,7 @@ if os.path.isfile(os.path.join(jhRoot, 'bin', 'lcatr-modulefiles-config')):
         print 'Some version of the package is already installed'
         print 'Delete or move away before attempting new install'
         print 'or re-invoke with --update option'
-        exit
+        sys.exit()
     else:
         print 'Overwriting old version'
 
