@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 from glob import glob
 from distutils.core import setup
 from collections import defaultdict
@@ -10,7 +11,7 @@ for path in glob('modules/*/*'):
     _,k,v = path.split('/')
     files['share/modulefiles/'+k].append(path)
 files['share/modulefiles'] = glob('lib/*.tcl')
-print files.items()
+print(files.items())
 setup(name='lcatr-modulefiles',
       version=open('VERSION').read().strip(),
       url='https://git.racf.bnl.gov/astro/cgit/lcatr/modules.git',
